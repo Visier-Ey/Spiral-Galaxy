@@ -1,0 +1,75 @@
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  props: {
+    title: String,
+    content: String,
+  },
+})
+</script>
+
+<template>
+  <div class="news-card-item active">
+      <header>news!</header>
+      <main>{{props.props.content}}</main>
+  </div>
+</template>
+
+<style scoped>
+
+.news-card-item{
+  position: absolute;
+  opacity: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  transform: translateX(20%) translateY(20%);
+  transition: all 0.7s ease;
+  overflow: hidden;
+}
+
+
+.news-card-item header{
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.80), rgba(255, 115, 0, 0.90));
+  color: white;
+  text-transform: uppercase;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: fantasy;
+  box-shadow: 0 0 10px  rgba(255, 0, 0, 0.80);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.6), /* 较近的辉光 */
+    0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.news-card-item main{
+  padding: 20px 20px 40px;
+  color: white;
+  font-size: 1.5rem;
+  font-family: fangsong;
+}
+.news-card-item footer{
+  position: absolute;
+  width: 50%;
+  background: rgba(0,0,0,0.1);
+  padding: 10px 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.news-card-item.active {
+  opacity: 1;
+  z-index: 1;
+  transform: none;
+}
+
+</style>
