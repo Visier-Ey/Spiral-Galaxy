@@ -35,7 +35,8 @@ const BriefCardsProps = [
   },
   {
     header: 'GitHub',
-    content: 'not given link',
+    content: `Link to visier's GitHub`,
+    link: 'https://github.com/Visier-Ey/Spiral-Galaxy'
   },
 ]
 
@@ -179,6 +180,8 @@ function webGL() {
   // limit the orbiting angle
   controls.minDistance = 5
   controls.maxDistance = 10
+  // disable dragging
+  controls.enablePan = false
   generateGalaxy()
   function animate() {
     scene.traverse((child) => {
@@ -196,8 +199,12 @@ function webGL() {
 </script>
 
 <style scoped>
-* {
-  overflow: hidden;
+main{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 canvas {
   position: fixed;
@@ -214,8 +221,8 @@ canvas {
   height: 100%;
 }
 .newsArea {
-  padding-top: 70px;
-  position: absolute;
+  padding-bottom: 200px;
+  position: fixed;
   right: 3%;
   height: 100%;
   width: auto;

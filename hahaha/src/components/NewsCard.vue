@@ -1,84 +1,78 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import NewsCardItem from '@/components/NewsCardItem.vue'
-const loginPage = ref(null)
-const registerPage = ref(null)
-const loginCard = ref(null)
+const newsCard = ref(null)
 const box = ref(null)
-onMounted(() => {
-  loginPage.value = document.querySelector('.first')
-  registerPage.value = document.querySelector('.second')
-  loginCard.value = document.querySelector('.news-card')
-  box.value = document.querySelector('.box')
-})
-
-function showToggle() {
-  loginCard.value.classList.toggle('show')
-  box.value.classList.toggle('show')
-}
-
-const news =[
+const news =ref([
   {
     title: 'news1',
-    content: 'content1'
+    content: 'content1',
+    active: false
   },
   {
     title: 'news2',
-    content: 'content2'
+    content: 'content2',
+    active: false
   },
   {
     title: 'news3',
-    content: 'content3'
+    content: 'content3',
+    active: false
   }
-]
-const NewsItems= ref();
+])
 const NewsDotsItems= ref();
-onMounted(()=>{
-  NewsItems.value = document.querySelectorAll('.news-card-item')
+
+onMounted(() => {
   NewsDotsItems.value = document.querySelectorAll('.dot')
+  news.value[0].active = true
+  NewsDotsItems.value[0].classList.add('active')
 })
-function changeActive(index){
-  NewsItems.value.forEach((item, i)=>{
-    if(i === index){
-      item.classList.add('active')
-    }else{
-      item.classList.remove('active')
-    }
-  })
-  NewsDotsItems.value.forEach((item, i)=>{
-    if(i === index){
-      item.classList.add('active')
-    }else{
-      item.classList.remove('active')
-    }
-  })
+function showToggle() {
+  newsCard.value.classList.toggle('show')
+  box.value.classList.toggle('show')
+}
+
+function lastOneActive() {
+  let index = news.value.findIndex((item) => item.active)
+  news.value[index].active = false
+  NewsDotsItems.value[index].classList.remove('active')
+  if (index === 0) {
+    news.value[news.value.length - 1].active = true
+    NewsDotsItems.value[news.value.length - 1].classList.add('active')
+  } else {
+    news.value[index - 1].active = true
+    NewsDotsItems.value[index - 1].classList.add('active')
+  }
+}
+function nextOneActive() {
+  let index = news.value.findIndex((item) => item.active)
+  news.value[index].active = false
+  NewsDotsItems.value[index].classList.remove('active')
+  if (index === news.value.length - 1) {
+    news.value[0].active = true
+    NewsDotsItems.value[0].classList.add('active')
+  } else {
+    news.value[index + 1].active = true
+    NewsDotsItems.value[index + 1].classList.add('active')
+  }
 }
 </script>
 
 <template>
   <main>
-    <div class="box" @click="showToggle">
-      <svg
-        t="1737293295273"
-        class="icon"
-        viewBox="0 0 1024 1024"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        p-id="1475"
-        width="200"
-        height="200"
-      >
-        <path
-          d="M326.5536 852.5824c110.3872-112.0256 219.3408-223.3344 329.3184-333.6192 13.824-13.9264 16.0768-20.8896 0.8192-35.9424-105.472-104.2432-209.6128-209.7152-314.6752-314.1632-11.264-11.264-14.7456-17.6128-0.8192-29.5936 19.5584-16.7936 37.0688-36.0448 54.784-54.784 7.3728-7.7824 11.776-10.0352 20.8896-0.9216C551.936 219.4432 687.4112 354.816 823.0912 489.984c8.192 8.192 8.704 12.6976 0.2048 21.1968A149528.7808 149528.7808 0 0 0 419.84 913.7152c-8.6016 8.6016-13.5168 10.4448-23.3472 1.1264-23.552-22.4256-48.5376-43.4176-69.9392-62.2592z"
-          p-id="1476"
-        ></path>
-      </svg>
-    </div>
-    <div class="news-card">
+    <div class="box" ref="box" @click="showToggle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24"><path fill="currentColor" d="M6.325 12.85q-.225-.15-.337-.375T5.874 12t.113-.475t.337-.375l8.15-5.175q.125-.075.263-.112T15 5.825q.4 0 .7.288t.3.712v10.35q0 .425-.3.713t-.7.287q-.125 0-.262-.038t-.263-.112zM14 15.35v-6.7L8.75 12z"/></svg></div>
+    <div class="news-card" ref="newsCard">
+      <button class="lastOne" @click="lastOneActive">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 22L6 12L16 2l1.775 1.775L9.55 12l8.225 8.225z"/></svg>
+      </button>
       <news-card-item v-for="(item, index) in news" :key="index" :props="item" />
+      <button class="nextOne" @click="nextOneActive">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 22L6 12L16 2l1.775 1.775L9.55 12l8.225 8.225z"/></svg>
+      </button>
       <footer>
         <ul>
-          <li class="dot" v-for="(_,index) in news" :key="index" @click="changeActive(index)"></li>
+          <li class="dot" v-for="(_,index) in news" :key="index"></li>
         </ul>
       </footer>
     </div>
@@ -114,8 +108,6 @@ main {
   background: rgba(255, 255, 255, 0.2);
 }
 
-
-
 .news-card footer{
   position: absolute;
   width: 50%;
@@ -129,8 +121,7 @@ main {
   z-index: 100;
 }
 
-
-ul li[class='dot'] {
+.dot {
   width: 10px;
   height: 10px;
   background: rgba(255, 255, 255, 0.49);
@@ -144,7 +135,34 @@ ul li[class='dot'] {
   }
 }
 
-
+.lastOne,
+.nextOne {
+  position: absolute;
+  width: 6%;
+  height: 16%;
+  top: 42%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff7300;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.5);
+  }
+}
+.lastOne{
+  left: 15%;
+}
+.nextOne{
+  right: 15%;
+  transform: scale(-1);
+}
 
 .box {
   position: absolute;
@@ -165,6 +183,7 @@ ul li[class='dot'] {
   }
   svg {
     fill: white;
+    transform: scale(1.3);
   }
   &::after,
   &::before {

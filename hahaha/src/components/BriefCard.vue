@@ -5,6 +5,7 @@ const props = defineProps({
   props: {
     header: String,
     content: String,
+    link: String
   },
 })
 </script>
@@ -16,7 +17,7 @@ const props = defineProps({
       <div class="content">
         <h2>{{ props.props.header }}</h2>
         <p>{{ props.props.content }}</p>
-        <a href="#">learn more</a>
+        <a :href="props.props.link">learn more</a>
       </div>
     </div>
   </div>

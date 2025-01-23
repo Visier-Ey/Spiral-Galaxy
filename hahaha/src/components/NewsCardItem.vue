@@ -1,16 +1,24 @@
 <script setup>
-import { defineProps } from 'vue'
-
+import { defineProps, ref, watch } from 'vue'
+const cardItem = ref(null);
 const props = defineProps({
   props: {
     title: String,
     content: String,
+    active: Boolean,
   },
+})
+watch(() => props.props.active, (newVal) => {
+  if (newVal) {
+    cardItem.value.classList.add('active')
+  } else {
+    cardItem.value.classList.remove('active')
+  }
 })
 </script>
 
 <template>
-  <div class="news-card-item active">
+  <div class="news-card-item" ref="cardItem">
       <header>news!</header>
       <main>{{props.props.content}}</main>
   </div>
