@@ -12,7 +12,13 @@ export const useCounterStore = defineStore('counter', () => {
 })
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref({ name: '' })
+  const user = ref({
+    name: '',
+    age: 0,
+    email: '',
+    website: '',
+    phone: ''
+  })
   const isLogin = ref(false)
   const upperCaseName = computed(() => user.value.name.toUpperCase())
   function login(newName) {
@@ -23,5 +29,16 @@ export const useUserStore = defineStore('user', () => {
     user.value.name = ''
     isLogin.value = false
   }
-  return { user, upperCaseName, login , logout , isLogin}
+  function updateUserInfo(newInfo) {
+    Object.assign(user.value, newInfo)
+  }
+  function clearUserInfo() {
+    Object.keys(user.value).forEach(key => {
+      user.value[key] = ''
+    })
+  }
+  function saveUserInfo() {
+    console.log('save user info')
+  }
+  return { user, upperCaseName, login, logout, isLogin, updateUserInfo, clearUserInfo, saveUserInfo }
 })

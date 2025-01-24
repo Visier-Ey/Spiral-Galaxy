@@ -11,7 +11,7 @@ import NavBar from '@/components/NavBar.vue'
 </template>
 
 <style scoped>
-main{
+main {
   position: relative;
   width: 100%;
   height: 100%;

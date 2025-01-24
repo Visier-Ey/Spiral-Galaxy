@@ -1,6 +1,6 @@
 <script setup>
-import {  ref } from 'vue'
-import {useUserStore} from '@/stores/user.js'
+import { ref } from 'vue'
+import { useUserStore } from '@/stores/user.js'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -61,11 +61,11 @@ function register() {
       <div class="login active" ref="loginPage">
         <h1>Login</h1>
         <div class="input-wrapper">
-          <input type="text" placeholder="Username" v-model="account"/>
+          <input type="text" placeholder="Username" v-model="account" />
           <div class="line"></div>
         </div>
         <div class="input-wrapper">
-          <input type="password" placeholder="Password" v-model="password"/>
+          <input type="password" placeholder="Password" v-model="password" />
           <div class="line"></div>
         </div>
         <span class="warning" ref="loginWarning"></span>
@@ -77,15 +77,15 @@ function register() {
       <div class="register" ref="registerPage">
         <h1>Register</h1>
         <div class="input-wrapper">
-          <input type="text" placeholder="Username" v-model="account"/>
+          <input type="text" placeholder="Username" v-model="account" />
           <div class="line"></div>
         </div>
         <div class="input-wrapper">
-          <input type="password" placeholder="Password" v-model="password"/>
+          <input type="password" placeholder="Password" v-model="password" />
           <div class="line"></div>
         </div>
         <div class="input-wrapper">
-          <input type="password" placeholder="Password" v-model="confirmPassword"/>
+          <input type="password" placeholder="Password" v-model="confirmPassword" />
           <div class="line"></div>
         </div>
         <span class="warning" ref="registerWarning"></span>
@@ -166,7 +166,7 @@ main {
       background: linear-gradient(90deg, #ff7300, #ff0000, white);
       background-size: 200%;
     }
-    input:focus + .line{
+    input:focus + .line {
       animation: gradient 0.7s linear;
     }
     &::before {
@@ -255,7 +255,7 @@ main {
   left: 10%;
   margin: 10px auto;
   color: red;
-  font-size: 1.0rem;
+  font-size: 1rem;
   text-align: center;
 }
 

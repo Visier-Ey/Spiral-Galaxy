@@ -4,7 +4,7 @@
     <main>
       <div class="newsArea">
         <div class="wrapper">
-          <NewsCard/>
+          <NewsCard />
         </div>
       </div>
       <div class="learnMoreArea">
@@ -36,7 +36,7 @@ const BriefCardsProps = [
   {
     header: 'GitHub',
     content: `Link to visier's GitHub`,
-    link: 'https://github.com/Visier-Ey/Spiral-Galaxy'
+    link: 'https://github.com/Visier-Ey/Spiral-Galaxy',
   },
 ]
 
@@ -199,7 +199,7 @@ function webGL() {
 </script>
 
 <style scoped>
-main{
+main {
   width: 100%;
   height: 100%;
   display: flex;

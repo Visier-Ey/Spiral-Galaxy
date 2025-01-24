@@ -3,24 +3,25 @@ import { onMounted, ref } from 'vue'
 import NewsCardItem from '@/components/NewsCardItem.vue'
 const newsCard = ref(null)
 const box = ref(null)
-const news =ref([
+const news = ref([
   {
     title: 'news！',
-    content: 'Much of the world\'s attention, however, has been focused on Trump\'s economic policy, in particular, his threat to impose draconian tariffs on many countries, including China. While Trump clearly indicated in his address that tariffs would be a cornerstone of his policy and announced plans to set up an External Revenue Service to oversee them, he did not provide specifics.',
-    active: false
+    content:
+      "Much of the world's attention, however, has been focused on Trump's economic policy, in particular, his threat to impose draconian tariffs on many countries, including China. While Trump clearly indicated in his address that tariffs would be a cornerstone of his policy and announced plans to set up an External Revenue Service to oversee them, he did not provide specifics.",
+    active: false,
   },
   {
     title: 'news2',
     content: 'content2',
-    active: false
+    active: false,
   },
   {
     title: 'news3',
     content: 'content3',
-    active: false
-  }
+    active: false,
+  },
 ])
-const NewsDotsItems= ref();
+const NewsDotsItems = ref()
 
 onMounted(() => {
   NewsDotsItems.value = document.querySelectorAll('.dot')
@@ -61,18 +62,28 @@ function nextOneActive() {
 <template>
   <main>
     <div class="box" ref="box" @click="showToggle">
-      <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24"><path fill="currentColor" d="M6.325 12.85q-.225-.15-.337-.375T5.874 12t.113-.475t.337-.375l8.15-5.175q.125-.075.263-.112T15 5.825q.4 0 .7.288t.3.712v10.35q0 .425-.3.713t-.7.287q-.125 0-.262-.038t-.263-.112zM14 15.35v-6.7L8.75 12z"/></svg></div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M6.325 12.85q-.225-.15-.337-.375T5.874 12t.113-.475t.337-.375l8.15-5.175q.125-.075.263-.112T15 5.825q.4 0 .7.288t.3.712v10.35q0 .425-.3.713t-.7.287q-.125 0-.262-.038t-.263-.112zM14 15.35v-6.7L8.75 12z"
+        />
+      </svg>
+    </div>
     <div class="news-card" ref="newsCard">
       <button class="lastOne" @click="lastOneActive">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 22L6 12L16 2l1.775 1.775L9.55 12l8.225 8.225z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M16 22L6 12L16 2l1.775 1.775L9.55 12l8.225 8.225z" />
+        </svg>
       </button>
       <news-card-item v-for="(item, index) in news" :key="index" :props="item" />
       <button class="nextOne" @click="nextOneActive">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 22L6 12L16 2l1.775 1.775L9.55 12l8.225 8.225z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M16 22L6 12L16 2l1.775 1.775L9.55 12l8.225 8.225z" />
+        </svg>
       </button>
       <footer>
         <ul>
-          <li class="dot" v-for="(_,index) in news" :key="index"></li>
+          <li class="dot" v-for="(_, index) in news" :key="index"></li>
         </ul>
       </footer>
     </div>
@@ -108,10 +119,10 @@ main {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.news-card footer{
+.news-card footer {
   position: absolute;
   width: 50%;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
   padding: 10px 0;
   bottom: 0;
   display: flex;
@@ -130,7 +141,7 @@ main {
   margin: 0 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  &.active{
+  &.active {
     background: white;
   }
 }
@@ -156,10 +167,10 @@ main {
     transform: scale(1.5);
   }
 }
-.lastOne{
+.lastOne {
   left: 15%;
 }
-.nextOne{
+.nextOne {
   right: 15%;
   transform: scale(-1);
 }

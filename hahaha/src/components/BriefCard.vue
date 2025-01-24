@@ -5,7 +5,7 @@ const props = defineProps({
   props: {
     header: String,
     content: String,
-    link: String
+    link: String,
   },
 })
 </script>

@@ -1,12 +1,11 @@
 <template>
   <main>
-    <LoginCard/>
+    <LoginCard />
   </main>
 </template>
 
 <script setup>
 import LoginCard from '@/components/LoginCard.vue'
-
 </script>
 
 <style scoped>

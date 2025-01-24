@@ -1,6 +1,6 @@
 <script setup>
-import {useUserStore} from '@/stores/user.js'
-import {RouterLink} from 'vue-router'
+import { useUserStore } from '@/stores/user.js'
+import { RouterLink } from 'vue-router'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -31,13 +31,17 @@ function user() {
         viewBox="0 0 24 24"
         fill="rgba(255, 115, 0, 0.75)"
         xmlns="http://www.w3.org/2000/svg"
+        @click="userStore.isLogin ? user() : login()"
       >
         <path
           d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
         />
       </svg>
       <button v-if="!userStore.isLogin" @click="login">Login</button>
-      <button v-if="userStore.isLogin" @click="user">Hi,{{userStore.upperCaseName}}</button>
+      <div class="logout-box" v-if="userStore.isLogin">
+        Hi,{{ userStore.upperCaseName }}
+        <button @click="userStore.logout">Logout</button>
+      </div>
     </div>
   </nav>
 </template>
@@ -69,7 +73,7 @@ nav {
   position: absolute;
   font-size: 5.5rem;
   transform: skewX(-25deg);
-  background: linear-gradient(90deg, #ff0000, #ff7300,#ff0000) ;
+  background: linear-gradient(90deg, #ff0000, #ff7300, #ff0000);
   background-size: 200%;
   background-clip: text;
   color: transparent;
@@ -108,7 +112,7 @@ nav {
   padding-right: 20px;
   color: white;
   font-size: 1rem;
-  & svg{
+  & svg {
     transition: all 0.3s ease;
   }
   & svg:hover {
@@ -125,6 +129,41 @@ nav {
     transition: all 0.3s ease;
     &:hover {
       color: white;
+    }
+  }
+  .logout-box{
+    position: relative;
+    text-shadow: 0 5px 15px rgba(255, 115, 0, 0.9);
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    color: #ff7300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    button {
+      position: absolute;
+      top: 2.0rem;
+      right: 0;
+      height: 0;
+      text-shadow: 0 5px 15px rgba(255, 115, 0, 0.9);
+      font-size: 1.3rem;
+      background: none;
+      border: none;
+      color: #ff7300;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      &:hover {
+        color: white;
+      }
+    }
+    &:hover {
+      color: white;
+      button {
+        height: 2rem;
+      }
     }
   }
 }
