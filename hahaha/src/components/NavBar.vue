@@ -1,10 +1,16 @@
 <script setup>
+import {useUserStore} from '@/stores/user.js'
+import {RouterLink} from 'vue-router'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const userStore = useUserStore()
 
 function login() {
-  window.location.href = '/login'
+  router.push('/login')
 }
-function logout() {
-  console.log('logout')
+function user() {
+  router.push('/user')
 }
 </script>
 
@@ -12,11 +18,11 @@ function logout() {
   <nav>
     <div class="header">VISIER</div>
     <div class="tool">
-      <a href="/home">Home</a>
-      <a href="#">Services</a>
-      <a href="#">Products</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <RouterLink to="/home">Home</RouterLink>
+      <RouterLink to="#">Services</RouterLink>
+      <RouterLink to="#">Products</RouterLink>
+      <RouterLink to="#">About</RouterLink>
+      <RouterLink to="#">Contact</RouterLink>
     </div>
     <div class="user">
       <svg
@@ -30,8 +36,8 @@ function logout() {
           d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
         />
       </svg>
-      <button v-if="true" @click="login">Login</button>
-      <button v-if="false" @click="logout">Logout</button>
+      <button v-if="!userStore.isLogin" @click="login">Login</button>
+      <button v-if="userStore.isLogin" @click="user">Hi,{{userStore.upperCaseName}}</button>
     </div>
   </nav>
 </template>
@@ -102,6 +108,13 @@ nav {
   padding-right: 20px;
   color: white;
   font-size: 1rem;
+  & svg{
+    transition: all 0.3s ease;
+  }
+  & svg:hover {
+    fill: white;
+    cursor: pointer;
+  }
   button {
     text-shadow: 0 5px 15px rgba(255, 115, 0, 0.9);
     font-size: 1.2rem;

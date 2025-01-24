@@ -1,6 +1,10 @@
 <script setup>
 import {  ref } from 'vue'
+import {useUserStore} from '@/stores/user.js'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
+const userStore = useUserStore()
 const loginPage = ref(null)
 const registerPage = ref(null)
 const loginCard = ref(null)
@@ -20,13 +24,18 @@ function jumpToLogin() {
 
 function login() {
   // error check
+  console.log('login')
+  console.log(account.value)
   const accountValue = account.value.trim()
   const passwordValue = password.value.trim()
   if (!accountValue || !passwordValue) {
     loginWarning.value.innerText = 'Please fill in the form'
     return
   }
-  //TODO: login logic here
+  //TODO: login logic here ,All the account pass
+  console.log(accountValue)
+  userStore.login(accountValue)
+  router.push('/home')
 }
 function register() {
   // error check
@@ -41,7 +50,8 @@ function register() {
     registerWarning.value.innerText = 'Password does not match'
     return
   }
-  //TODO: register logic here
+  //TODO: register logic here, All the account pass
+  console.log('simulating register,all the account pass')
 }
 </script>
 

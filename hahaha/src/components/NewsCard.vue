@@ -5,8 +5,8 @@ const newsCard = ref(null)
 const box = ref(null)
 const news =ref([
   {
-    title: 'news1',
-    content: 'content1',
+    title: 'news！',
+    content: 'Much of the world\'s attention, however, has been focused on Trump\'s economic policy, in particular, his threat to impose draconian tariffs on many countries, including China. While Trump clearly indicated in his address that tariffs would be a cornerstone of his policy and announced plans to set up an External Revenue Service to oversee them, he did not provide specifics.',
     active: false
   },
   {

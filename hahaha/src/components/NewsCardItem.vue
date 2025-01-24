@@ -57,10 +57,14 @@ watch(() => props.props.active, (newVal) => {
 }
 
 .news-card-item main{
+  z-index: 100;
+  height: 100%;
   padding: 20px 20px 40px;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: fangsong;
+  overflow: auto;
+  scrollbar-color: transparent transparent;
 }
 .news-card-item footer{
   position: absolute;
