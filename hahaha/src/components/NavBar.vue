@@ -2,20 +2,23 @@
 import { useUserStore } from '@/stores/user.js'
 import { RouterLink } from 'vue-router'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
 const router = useRouter()
 const userStore = useUserStore()
-
+const nav = ref(null)
 function login() {
   router.push('/login')
 }
 function user() {
   router.push('/user')
 }
+
+
 </script>
 
 <template>
-  <nav>
+  <nav ref="nav">
     <div class="header">VISIER</div>
     <div class="tool">
       <RouterLink to="/home">Home</RouterLink>
@@ -47,11 +50,12 @@ function user() {
 </template>
 
 <style scoped>
+
 nav {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  opacity: 1;
   height: 70px;
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -62,7 +66,8 @@ nav {
   padding: 0 20px;
   z-index: 1000;
   border: none;
-  border-top: 1px solid rgba(255, 115, 0, 0.75);
+  border-top: 1px solid var(--secondary-color-shadow);
+  transition: all 0.3s ease;
 }
 .header {
   z-index: 100;
@@ -73,12 +78,12 @@ nav {
   position: absolute;
   font-size: 5.5rem;
   transform: skewX(-25deg);
-  background: linear-gradient(90deg, #ff0000, #ff7300, #ff0000);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
   background-size: 200%;
   background-clip: text;
   color: transparent;
   animation: infinite 1.5s linear gradient;
-  box-shadow: 0 10px 10px rgba(255, 115, 0, 0.9);
+  box-shadow: 0 10px 10px var(--secondary-color);
 }
 .tool {
   position: relative;
@@ -95,7 +100,7 @@ nav {
     color: #ff7300;
     font-size: 1.5rem;
     cursor: pointer;
-    text-shadow: 2px 2px 5px rgba(255, 115, 0, 0.9);
+    text-shadow: 2px 2px 5px var(--secondary-color-shadow);
     transition: all 0.3s ease;
     &:hover {
       color: white;
@@ -120,11 +125,11 @@ nav {
     cursor: pointer;
   }
   button {
-    text-shadow: 0 5px 15px rgba(255, 115, 0, 0.9);
+    text-shadow: 0 5px 15px var(--secondary-color-shadow);
     font-size: 1.2rem;
     background: none;
     border: none;
-    color: #ff7300;
+    color: var(--secondary-color);
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {
@@ -133,11 +138,11 @@ nav {
   }
   .logout-box{
     position: relative;
-    text-shadow: 0 5px 15px rgba(255, 115, 0, 0.9);
+    text-shadow: 0 5px 15px var(--secondary-color-shadow);
     font-size: 1.2rem;
     background: none;
     border: none;
-    color: #ff7300;
+    color: var(--secondary-color);
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -147,11 +152,11 @@ nav {
       top: 2.0rem;
       right: 0;
       height: 0;
-      text-shadow: 0 5px 15px rgba(255, 115, 0, 0.9);
+      text-shadow: 0 5px 15px var(--secondary-color-shadow);
       font-size: 1.3rem;
       background: none;
       border: none;
-      color: #ff7300;
+      color: var(--secondary-color);
       cursor: pointer;
       transition: all 0.3s ease;
       overflow: hidden;

@@ -11,13 +11,13 @@ const news = ref([
     active: false,
   },
   {
-    title: 'news2',
-    content: 'content2',
+    title: 'news!',
+    content: 'According to WEF statistics, 83 percent of executives see AI as a strategic priority for their organizations. While history has repeatedly proved the importance of innovation and technology in economic growth, the North-South divide, especially in technology, has become increasingly pronounced in recent years.',
     active: false,
   },
   {
-    title: 'news3',
-    content: 'content3',
+    title: 'news!',
+    content: 'With its core AI industry reaching nearly 600 billion Chinese yuan ($82.5 billion), China has actively engaged in global AI governance, collaborating with the WEF and other international organizations to promote cooperation, said Chen Liming, chair of Greater China of the WEF, at Davos.',
     active: false,
   },
 ])
@@ -159,7 +159,7 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    color: #ff7300;
+    color: var(--secondary-color);
   }
   svg {
     width: 100%;
@@ -180,7 +180,7 @@ main {
   left: -110px;
   width: 90px;
   height: 90px;
-  background: linear-gradient(90deg, #ff0000, #ff7300);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -204,7 +204,7 @@ main {
     top: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #ff0000, #ff7300);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     z-index: -1;
     border-radius: 50%;
   }

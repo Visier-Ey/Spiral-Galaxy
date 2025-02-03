@@ -1,9 +1,20 @@
 <script setup>
 import {useUserStore} from '@/stores/user.js'
+import { ref } from 'vue';
 
 const userStore = useUserStore()
-
-
+const userName = ref(userStore.user.name)
+const userEmail = ref(userStore.user.email)
+const userPhone = ref(userStore.user.phone)
+const userWebsite = ref(userStore.user.website)
+function saveUserInfo(){
+  userStore.saveUserInfo({
+    name: userName.value,
+    email: userEmail.value,
+    phone: userPhone.value,
+    website: userWebsite.value
+  })
+}
 </script>
 
 <template>
@@ -13,21 +24,21 @@ const userStore = useUserStore()
       <main class="userInfo">
         <div class="input-wrapper">
           <label for="name">Name</label>
-          <input type="text" v-model="userStore.user.name" />
+          <input type="text" v-model="userName" />
         </div>
         <div class="input-wrapper">
           <label for="email">Email</label>
-          <input type="email" v-model="userStore.user.email" />
+          <input type="email" v-model="userEmail" />
         </div>
         <div class="input-wrapper">
           <label for="phone">Phone</label>
-          <input type="text" v-model="userStore.user.phone" />
+          <input type="text" v-model="userPhone" />
         </div>
         <div class="input-wrapper">
           <label for="website">Website</label>
-          <input type="text" v-model="userStore.user.website" />
+          <input type="text" v-model="userWebsite" />
         </div>
-        <button @click="userStore.saveUserInfo()">Save</button>
+        <button @click="saveUserInfo">Save</button>
       </main>
     </div>
   </main>

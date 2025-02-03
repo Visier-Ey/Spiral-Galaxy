@@ -43,7 +43,7 @@ watch(
 .news-card-item header {
   width: 100%;
   height: 50px;
-  background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(255, 115, 0, 0.9));
+  background: linear-gradient(90deg, var(--primary-color-shadow), var(--secondary-color-shadow));
   color: white;
   text-transform: uppercase;
   font-size: 40px;
@@ -51,7 +51,7 @@ watch(
   justify-content: center;
   align-items: center;
   font-family: fantasy;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  box-shadow: 0 0 10px var(--primary-color-shadow);
   text-shadow:
     0 0 10px rgba(255, 255, 255, 0.6),
     /* 较近的辉光 */ 0 0 40px rgba(255, 255, 255, 0.2);

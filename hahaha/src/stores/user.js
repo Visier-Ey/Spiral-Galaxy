@@ -37,8 +37,8 @@ export const useUserStore = defineStore('user', () => {
       user.value[key] = ''
     })
   }
-  function saveUserInfo() {
-    console.log('save user info')
+  function saveUserInfo(userInfo) {
+    Object.assign(user.value, userInfo)
   }
   return { user, upperCaseName, login, logout, isLogin, updateUserInfo, clearUserInfo, saveUserInfo }
 })

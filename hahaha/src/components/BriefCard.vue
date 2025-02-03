@@ -93,7 +93,7 @@ const props = defineProps({
 .box::after {
   content: '';
   position: absolute;
-  background: linear-gradient(0deg, #ff9900, #ff0000);
+  background: linear-gradient(0deg, var(--secondary-color), var(--primary-color));
   top: 0;
   left: 50px;
   width: 50%;

@@ -102,12 +102,12 @@ function register() {
 main {
   width: 100%;
   height: 100%;
-  background: white;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: visible;
+  background: transparent;
 }
 
 .login-card {
@@ -118,7 +118,7 @@ main {
   padding: 20px;
   height: 600px;
   margin: 50px auto;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   backdrop-filter: blur(10px);
@@ -130,7 +130,7 @@ main {
 }
 
 .login-card:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -141,7 +141,7 @@ main {
   width: 70%;
   height: 100%;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transform: translateX(20%) translateY(20%);
   transition: all 0.7s ease;
