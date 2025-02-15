@@ -3,4 +3,8 @@
     --secondary-color: #ff7300;
     --primary-color-shadow: #ff0000ee;
     --secondary-color-shadow: #ff7300ee;
+    --universal-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    --universal-shadow-hover: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    --primary-theme: #ffffff;
+    --secondary-theme: #000000;
 }

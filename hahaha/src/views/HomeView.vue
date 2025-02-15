@@ -1,18 +1,21 @@
 <template>
   <main>
-    <canvas class="webgl"></canvas>
-    <main>
-      <div class="newsArea">
-        <div class="wrapper">
-          <NewsCard />
+    <div class="inside" ref="Inside">
+      <canvas class="webgl"></canvas>
+      <main class="container">
+        <div class="newsArea">
+          <div class="wrapper">
+            <NewsCard />
+          </div>
         </div>
-      </div>
-      <div class="learnMoreArea">
-        <div class="wrapper">
-          <BriefCard v-for="card in BriefCardsProps" :key="card.header" :props="card" />
+        <div class="learnMoreArea">
+          <div class="wrapper">
+            <BriefCard v-for="card in BriefCardsProps" :key="card.header" :props="card" />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
+    <HomeLayout class="homeLayout" />
   </main>
 </template>
 
@@ -20,9 +23,10 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { onMounted } from 'vue'
-import NewsCard from '@/components/NewsCard.vue'
-import BriefCard from '@/components/BriefCard.vue'
+import { onMounted,ref } from 'vue'
+import NewsCard from '@/components/Home/NewsCard.vue'
+import BriefCard from '@/components/Home/BriefCard.vue'
+import HomeLayout from '@/layouts/HomeLayout.vue'
 
 const BriefCardsProps = [
   {
@@ -196,15 +200,35 @@ function webGL() {
     renderer.render(scene, camera)
   }
 }
+
+const Inside = ref(null)
+// scroll listener
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    const scroll = window.scrollY
+    if (scroll > 150 && scroll < 1000) {
+      Inside.value.style.filter = `blur(${scroll * 0.01}px)`
+    }else {
+      Inside.value.style.filter = `blur(0px)`
+    }
+  })
+})
+
 </script>
 
 <style scoped>
 main {
   width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.inside {
+  position: fixed;
+  width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 canvas {
   top: 0;
@@ -212,6 +236,7 @@ canvas {
   width: 100%;
   height: 100%;
   display: block;
+  contain: content;
 }
 .wrapper {
   overflow: visible;
@@ -221,7 +246,7 @@ canvas {
 }
 .newsArea {
   padding-bottom: 200px;
-  position: fixed;
+  position: absolute;
   right: 3%;
   height: 100%;
   width: auto;
@@ -241,4 +266,12 @@ canvas {
     transform: scale(0.8) translateY(10%);
   }
 }
+.homeLayout {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
 </style>
+
+

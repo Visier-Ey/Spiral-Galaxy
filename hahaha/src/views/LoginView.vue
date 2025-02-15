@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import LoginCard from '@/components/LoginCard.vue'
+import LoginCard from '@/components/Login/LoginCard.vue'
 import * as THREE from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
@@ -172,7 +172,7 @@ function Webgl(){// ! Preload
   const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     // each var_speed seconds, update the vertices
-    if (elapsedTime % 0.001 < 0.001) {
+    if (elapsedTime % 0.01 < 0.01) {
       update()
     }
     controls.update()
@@ -198,5 +198,6 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
+  contain: content;
 }
 </style>

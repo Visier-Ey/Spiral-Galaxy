@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import NewsCardItem from '@/components/NewsCardItem.vue'
+import NewsCardItem from '@/components/Home/NewsCardItem.vue'
 const newsCard = ref(null)
 const box = ref(null)
 const news = ref([
@@ -100,6 +100,7 @@ main {
 }
 
 .news-card {
+  contain: strict;
   overflow: hidden;
   width: 0;
   height: 500px;

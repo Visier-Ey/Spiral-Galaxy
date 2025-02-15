@@ -32,6 +32,7 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  contain: content;
 }
 .box {
   position: relative;

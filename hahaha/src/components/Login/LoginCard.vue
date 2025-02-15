@@ -127,6 +127,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  contain: strict;
 }
 
 .login-card:hover {
@@ -146,6 +147,7 @@ main {
   transform: translateX(20%) translateY(20%);
   transition: all 0.7s ease;
   .input-wrapper {
+    contain: content;
     position: relative;
     width: 80%;
     margin: 20px auto;
