@@ -25,11 +25,11 @@ const count = ref({
 function showCheck(){
   if (count.value.tool > 0 || count.value.PDL > 0){
     PDL.value.classList.add('show')
-    nav.value.style.background= 'rgba(255, 255, 255, 0.8)'
+    nav.value.classList.add('gW')
     chosen(count.value.item)
   }else {
     PDL.value.classList.remove('show')
-    nav.value.style.background= 'rgba(0, 0, 0, 0.1)'
+    nav.value.classList.remove('gW')
     dispose(count.value.item)
   }
 }
@@ -71,11 +71,12 @@ onMounted(() => {
 })
 window.addEventListener('scroll', () => {
   // set the nav color when scroll
-  if (window.scrollY > 150){
+  if (window.scrollY > 50){
     nav.value.classList.add('gW')
   }else {
     nav.value.classList.remove('gW')
   }
+  console.log(nav.value)
 })
 </script>
 
@@ -90,7 +91,7 @@ window.addEventListener('scroll', () => {
         <RouterLink to="#">About</RouterLink>
         <RouterLink to="#">Contact</RouterLink>
       </div>
-      <div class="user">
+      <divsvg class="user">
         <svg
           width="100px"
           height="35px"
@@ -108,7 +109,7 @@ window.addEventListener('scroll', () => {
           Hi,{{ userStore.upperCaseName }}
           <button @click="userStore.logout">Logout</button>
         </div>
-      </div>
+      </divsvg>
     </nav>
     <PullDownList class="PullDownList" />
   </main>

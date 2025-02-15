@@ -1,10 +1,20 @@
 <script setup>
+import { ref } from 'vue'
 
+const edge = ref(null)
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY
+  if (scroll > 50) {
+    edge.value.style.borderLeft = 'var(--primary-theme) 1000px solid'
+  }else{
+    edge.value.style.borderLeft = 'rgba(255, 255, 255, 0.4) 1000px solid'
+  }
+})
 </script>
 
 <template>
 <main>
-  <div class="edge"></div>
+  <div class="edge" ref="edge"></div>
   <div class="wrapper">
     <div class="constraint">
 
@@ -23,16 +33,19 @@ main {
 }
 .edge{
   position: absolute;
-  top: -180px;
+  top: -130px;
   left: 0;
   width: 0;
   height: 0;
-  border-left: var(--primary-theme) 1000px solid;
+  backdrop-filter: blur(10px);
+  border-left: rgba(255, 255, 255, 0.4) 1000px solid;
   border-bottom: var(--primary-theme) 100px solid;
   border-right: transparent 100px solid;
   border-top: transparent 100px solid;
+  transition: all 0.3s ease;
 }
 .wrapper{
+  top: 50px;
   position: relative;
   width: 100%;
   height: 3100px;

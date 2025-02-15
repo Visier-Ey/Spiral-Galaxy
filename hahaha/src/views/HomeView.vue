@@ -206,6 +206,7 @@ const Inside = ref(null)
 onMounted(() => {
   window.addEventListener('scroll', () => {
     const scroll = window.scrollY
+    if (!Inside.value) return
     if (scroll > 150 && scroll < 1000) {
       Inside.value.style.filter = `blur(${scroll * 0.01}px)`
     }else {
